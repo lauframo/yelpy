@@ -1,0 +1,24 @@
+<!-- wanted to just make a partial of the new.erb but wasn't sure how to autopopulate the fields for this case and not that one -->
+
+<div class="form">
+  <h3>Edit <%= @restaurant.name %> </h3>
+
+    <% if @errors %>
+    <%= erb :"_errors" %>
+    <% end %>
+
+  <form class="userForm" method="POST" action="/restaurants/<%= @restaurant.id %>">
+    <input type="hidden" name="_method" value="put">
+    <label> Name: </label>
+    <br>
+    <input type="text" name="restaurant[name]" value="<%= @restaurant.name %>" ><br>
+    <label> Cuisinine: </label><br>
+    <input type="text" name="restaurant[cuisine]" value="<%= @restaurant.cuisine %>"><br>
+    <label> City: </label><br>
+    <input type="text" name="restaurant[city]" value="<%= @restaurant.city%>" ><br>
+    <label> State: </label><br>
+    <input type="text" name="restaurant[state]" value="<%= @restaurant.state%>"><br>
+    <input type="hidden" name="restaurant[creator_id]" value=<%= current_user.id %>><br>
+    <input type="submit" value="Update this restaurant!">
+  </form>
+</div>

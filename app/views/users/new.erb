@@ -1,0 +1,19 @@
+<div class="form">
+  <h3>Create a Yelpy Account! </h3>
+
+  <% if @errors %>
+  <%= erb :"_errors" %>
+  <% end %>
+
+
+  <form class="userForm" method="POST" action="/users">
+    <label> Username: </label>
+    <br>
+    <input type="text" name="user[username]" placeholder="Enter your username"><br>
+    <label> Email: </label><br>
+    <input type="text" name="user[email]" placeholder="Email"><br>
+    <label> Password: </label><br>
+    <input type="password" name="user[password]" placeholder="Password"><br>
+    <input type="submit" value="Sign me Up">
+  </form>
+</div>

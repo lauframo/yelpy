@@ -1,0 +1,11 @@
+<main>
+  <h3> Newest Restaurants in Town </h3>
+  <div class="restaurantsList">
+    <ul>
+      <% @restaurants.each do |restaurant| %>
+         <li class="restaurantBullet"> <a class="restaurantLink" href="/restaurants/<%= restaurant.id %>"> <%= restaurant.name %></a> <br>
+          <span class="restaurantlistdetails"> <%= restaurant.cuisine %> || <%= restaurant.city %>, <%= restaurant.state %> </span></li>
+      <% end %>
+    </ul>
+  </div>
+</main>

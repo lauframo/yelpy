@@ -1,0 +1,22 @@
+ <div class="form">
+  <% if @errors %>
+  <%= erb :"_errors" %>
+  <% end %>
+
+  <form class="userForm" method="POST" action="/restaurants/<%= @restaurant.id %>/reviews">
+    <label> Your Thoughts: </label>
+    <br><br>
+    <textarea rows="2" name="review[content]" placeholder="Tell us what you think"></textarea><br>
+    <label> Rating: </label>
+    <select name="review[points]">
+      <option value=1>1 </option> <br>
+      <option value=2>2 </option> <br>
+      <option value=3>3 </option> <br>
+      <option value=4>4 </option> <br>
+      <option value=5>5 </option>
+    <input type="hidden" name="review[restaurant_id]" value=<%= @restaurant.id %>>
+
+    <input type="hidden" name="review[author_id]" value=<%= current_user.id %>>
+    <input type="submit" value="Add my review!">
+  </form>
+</div>

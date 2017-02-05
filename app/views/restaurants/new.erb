@@ -1,0 +1,24 @@
+<div class="form">
+  <h3>Add a New Restaurant to Yelpy</h3>
+
+    <% if @errors %>
+    <%= erb :"_errors" %>
+    <% end %>
+
+  <form class="userForm" method="POST" action="/restaurants">
+    <label> Name: </label>
+    <br>
+    <input type="text" name="restaurant[name]" ><br>
+    <label> Cuisinine: </label><br>
+    <input type="text" name="restaurant[cuisine]"><br>
+    <label> Address: </label><br>
+    <input type="text" name="restaurant[address]"><br>
+    <label> City: </label><br>
+    <input type="text" name="restaurant[city]"><br>
+    <label> State: </label><br>
+    <input type="text" name="restaurant[state]"><br>
+    <input type="hidden" name="restaurant[creator_id]" value=<%= current_user.id %>><br>
+
+    <input type="submit" value="Create this new restaurant!">
+  </form>
+</div>
