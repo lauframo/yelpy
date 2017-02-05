@@ -23,6 +23,7 @@ get '/users/:id/restaurants' do
     redirect '/restaurants'
   else
     @restaurants = @user.restaurants
+    @reviews = @user.reviews
     erb :'/users/show'
   end
 end
