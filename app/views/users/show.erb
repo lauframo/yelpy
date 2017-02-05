@@ -1,11 +1,26 @@
+<div class="user-header"><h2><%= @user.username %></h2></div>
+
+<div class="user-stats"> <p> Member since: <%= long_form_date(@user.created_at) %>
+
 <h3> Your Restaurants </h3>
 
-<ul>
-  <% @restaurants.each do |restaurant| %>
-        <li class="restaurantBullet"> <a class="restaurantLink" href="/restaurants/<%= restaurant.id %>"> <%= restaurant.name %></a> <br>
-          <span class="restaurantlistdetails"> <%= restaurant.cuisine %> || <%= restaurant.city %>, <%= restaurant.state %> </span></li>
-  <% end %>
-</ul>
+<% if @restaurants.length < 1 %>
+	You have not created any restaurants yet. <a href="/restaurants/new"> Create a restaurant. </a>
+<% else %>
+	<ul>
+	  <% @restaurants.each do |restaurant| %>
+	        <li class="restaurantBullet"> <a class="restaurantLink" href="/restaurants/<%= restaurant.id %>"> <%= restaurant.name %></a> <br>
+	          <span class="restaurantlistdetails"> <%= restaurant.cuisine %> || <%= restaurant.city %>, <%= restaurant.state %> </span></li>
+	  <% end %>
+	</ul>
+<% end %>
 
 <h3> Your Reviews </h3>
+
+<ul>
+	<% @reviews.each do |review| %>
+		<li class="reviewBullet"> Your review for <a class= "restaurantLink" href="/restaurants/<%= review.restaurant.id %>"> <%= review.restaurant.name %></a>: <br> 
+		<%= review.content %></li>
+	<% end %>
+</ul>
 
