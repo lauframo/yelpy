@@ -17,7 +17,7 @@ post '/users' do
   end
 end
 
-get '/users/:id/restaurants' do
+get '/users/:id' do
   @user = User.find(params[:id])
   if current_user.id != @user.id
     redirect '/restaurants'
