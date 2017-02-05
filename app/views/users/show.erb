@@ -20,7 +20,8 @@
 <ul>
 	<% @reviews.each do |review| %>
 		<li class="reviewBullet"> Your review for <a class= "restaurantLink" href="/restaurants/<%= review.restaurant.id %>"> <%= review.restaurant.name %></a>: <br> 
-		<%= review.content %></li>
+		<%= review.content %> <br>
+		<span class = "reviewDetails"> <%= long_form_date(review.created_at) %> || Rating: <%= review.points %> </span></li>
 	<% end %>
 </ul>
 
