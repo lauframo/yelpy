@@ -1,38 +1,30 @@
 <div class="container">
-  <h3 class="header"> Newest Restaurants in Town </h3>
-  <br> <br>
-  <div class="card text-center">
-	<div class="card-header">
-	Featured
+	<h3 class="header"> Newest Restaurants in Town </h3><br> <br>
+	<div class="card text-center">
+		<div class="card-header"> Featured </div>
+			<div class="card-block">
+				<h4 class="card-title">Spicy and Expensive Restaurant</h4>
+				<p class="card-text">Our reviewers cannot stop talking about this new spot.</p>
+				<a href="#" class="btn btn-primary">Check It Out</a>
+			</div>
+			<div class="card-footer text-muted">2 days ago</div>
+		</div>
+		<br> <br> <br>
+
+
+		<div class="row">
+			<% @restaurants.each do |restaurant| %>
+			<div class="col-sm-6">
+				<div class="card">
+					<div class="card-block">
+						<h4 class="card-title"> <%= restaurant.name %></h4>
+						<!-- <div class="panel-body"> -->
+						<p class="restaurantlistdetails card-text"> <%= restaurant.cuisine %> || <%= restaurant.city %>, <%= restaurant.state %> </p>
+						<a href="/restaurants/<%= restaurant.id %>" class="btn btn-primary">Check It Out</a>
+					</div>
+				</div>
+			</div>
+			<% end %>
+		</div>
 	</div>
-	<div class="card-block">
-	<h4 class="card-title">Spicy and Expensive Restaurant</h4>
-	<p class="card-text">Our reviewers cannot stop talking about this new spot.</p>
-	<a href="#" class="btn btn-primary">Check It Out</a>
-	</div>
-	<div class="card-footer text-muted">
-	2 days ago
-	</div>
-	</div>
-	<br> <br> <br>
-  <div class="restaurantsList">
-    <!-- <div class="panel panel-default"> -->
-    <ol class ="list-group">
-    	<div class="row">
-      <% @restaurants.each do |restaurant| %>
-      	<div class="col-sm-6">
-	        <div class="card">
-	         	<div class="card-block">
-	         		<h4 class="card-title"> <%= restaurant.name %></h4>
-	         <!-- <div class="panel-body"> -->
-	          		<p class="restaurantlistdetails card-text"> <%= restaurant.cuisine %> || <%= restaurant.city %>, <%= restaurant.state %> </p>
-	          		<a href="/restaurants/<%= restaurant.id %>" class="btn btn-primary">Check It Out</a>
-	        	</div>
-        	</div>
-        </div>
-      <% end %>
-      	</div>
-      </ol>
-    </div>
-  <!-- </div> -->
 </div>	
