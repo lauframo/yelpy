@@ -11,7 +11,7 @@
     application.css is where you put your styles
   -->
   <link rel="stylesheet" href="/css/application.css">
-  
+
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
   <script src="/js/jquery.js"></script>
@@ -21,19 +21,36 @@
 </head>
 <body>
     <header>
-    <a id="yelpy" href="/restaurants">YELPY</a>
-    <% if logged_in? %>
-    <a class="nav" href="/restaurants/new">New Restaurant</a>
-    <a class="nav" href="/users/<%= current_user.id %>"> Profile </a>
-    <a class="nav" id="username-nav" href="/users/:id"> <%= User.find(session[:user_id]).username %> </a>
-    <form class="nav" method="post" action="/logout">
-      <input type="hidden" name="_method" value="delete">
-      <input id="logoutButton" type="submit" value="Logout">
-    </form>
-    <% else %>
-    <a class="nav" href="/login">Login</a>
-    <a class="nav" href="/users/new">Create Account</a>
-    <% end %>
+    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+      <a class="navbar-brand" href="/restaurants">YELPY</a>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+          <% if logged_in? %>
+          <li class="nav-item">
+            <a class="nav-link" href="/restaurants/new">New Restaurant</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/users/<%= current_user.id %>"> Profile </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="username-nav" href="/users/:id"> <%= User.find(session[:user_id]).username %> </a>
+          </li>
+          <form class="form-inline my-2 my-lg-0" method="post" action="/logout">
+            <input type="hidden" name="_method" value="delete">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
+           <!--  <input id="logoutButton" type="submit" value="Logout"> -->
+          </form>
+          <% else %>
+          <li class="nav-item">
+            <a class="nav-link" href="/login">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav" href="/users/new">Create Account</a>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
 
 
   </header>
