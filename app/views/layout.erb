@@ -21,38 +21,42 @@
 </head>
 <body>
     <header>
-    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-      <a class="navbar-brand" href="/restaurants">YELPY</a>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav">
-          <% if logged_in? %>
-          <li class="nav-item">
-            <a class="nav-link" href="/restaurants/new">New Restaurant</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/users/<%= current_user.id %>"> Profile </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="username-nav" href="/users/:id"> <%= User.find(session[:user_id]).username %> </a>
-          </li>
-          <form class="form-inline my-2 my-lg-0" method="post" action="/logout">
-            <input type="hidden" name="_method" value="delete">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
-           <!--  <input id="logoutButton" type="submit" value="Logout"> -->
-          </form>
-          <% else %>
-          <li class="nav-item">
-            <a class="nav-link" href="/login">Login</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav" href="/users/new">Create Account</a>
-          </li>
-          <% end %>
-        </ul>
-      </div>
-    </nav>
-
-
+        <nav class="navbar navbar-default ">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="/restaurants">YELPY</a>
+            </div>
+            <div class="collapse navbar-collapse"> 
+              <ul class="nav navbar-nav">
+                <% if logged_in? %>
+                <li class="nav-item">
+                  <a class="nav-link" href="/restaurants/new">New Restaurant</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/users/<%= current_user.id %>"> Profile </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="username-nav" href="/users/:id"> <%= User.find(session[:user_id]).username %> </a>
+                </li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <form class="navbar-form" method="post" action="/logout">
+                  <input type="hidden" name="_method" value="delete">
+                  <button class="btn btn-default navbar-btn" type="submit">Logout</button>
+                </form>
+              </ul>
+              <% else  %>
+                <li class="nav-item">
+                  <a class="nav-link" href="/login">Login</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav" href="/users/new">Create Account</a>
+                </li>
+              </ul>
+              <% end %>
+            </div>
+          </div>
+        </nav>
   </header>
   <%= yield %>
 </body>
