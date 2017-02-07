@@ -6,13 +6,16 @@
     differences in how form elements appear between Firefox and IE
     See: http://necolas.github.com/normalize.css/
   -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Pacifico" rel="stylesheet">
+  
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link rel="stylesheet" href="/css/normalize.css">
   <!--
     application.css is where you put your styles
   -->
-  <link rel="stylesheet" href="/css/application.css">
+  <link rel="stylesheet" href="/public/css/application.css">
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
   <script src="/js/jquery.js"></script>
   <script src="/js/application.js"></script>
@@ -21,10 +24,10 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-default ">
+        <nav class="navbar navbar-default">
           <div class="container-fluid">
             <div class="navbar-header">
-              <a class="navbar-brand" href="/restaurants">YELPY</a>
+              <a class="navbar-brand"  id="nav-header" href="/restaurants" style="font-family: 'Pacifico', cursive; font-size: 30px;">Yelpy</a>
             </div>
             <div class="collapse navbar-collapse"> 
               <ul class="nav navbar-nav">
@@ -36,14 +39,16 @@
                   <a class="nav-link" href="/users/<%= current_user.id %>"> Profile </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" id="username-nav" href="/users/:id"> <%= User.find(session[:user_id]).username %> </a>
+                  <a class="nav-link" id="username-nav" href="/users/<%= current_user.id %>" style="color: blue;"> <%= User.find(session[:user_id]).username %> </a>
                 </li>
               </ul>
               <ul class="nav navbar-nav navbar-right">
-                <form class="navbar-form" method="post" action="/logout">
-                  <input type="hidden" name="_method" value="delete">
-                  <button class="btn btn-default navbar-btn" type="submit">Logout</button>
-                </form>
+                <li class="nav-item">
+                  <form class="navbar-form" method="post" action="/logout">
+                    <input type="hidden" name="_method" value="delete">
+                    <button class="btn btn-default navbar-btn" type="submit">Logout</button>
+                  </form>
+                <li>
               </ul>
               <% else  %>
                 <li class="nav-item">
