@@ -23,8 +23,8 @@
   <% end %>
   <!-- <hr class="reviewsDivider"> -->
 
-  <div class="reviews">
-    <h3> Reviews </h3>
+  <div class="container">
+    <h3 class="header col-sm-12"> Reviews </h3>
     <% if !logged_in? %>
     <p><a href="/users/new"> Leave your own review. </a></p>
     <% else %>
@@ -36,8 +36,8 @@
       <% @reviews.each do |review| %>
         <div class="row">
           <div class="col-sm-1">
-            <button type="button"
-              <span class="glyphicons glyphicons-user" aria-hidden="true"></span>
+            <button type="button" class="btn btn-default">
+              <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
             </button>
           </div>
 
