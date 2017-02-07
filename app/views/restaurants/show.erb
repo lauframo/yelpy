@@ -32,29 +32,10 @@
     <% end %>
     <hr>
    <% if @reviews.length > 1 %>
-    <ul>
-      <% @reviews.each do |review| %>
-        <div class="row">
-          <div class="col-sm-1">
-            <button type="button" class="btn btn-default">
-              <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-            </button>
-          </div>
-
-          <div class="col-sm-5">
-          <div class="panel panel-default">
-          <div class="panel-heading">
-            <strong> <%= User.find(review.author_id).username %> || Rating: <%= review.points %></strong> <%= long_form_date(review.created_at) %>
-          </div>
-          <div class="panel-body">
-            <p> <%= review.content %> <br></p>
-            </div>
-          </div>
-          </div>
-        </div>
-      <% end %>
-    <% end %>
-    </ul>
+      <%= erb :"/reviews/_show" %>
+    <% else %>
+      <p> No reviews for <%= @restaurant.name %> yet. Be the first one to review it!</p>
+  <% end %>
   </div>
   </div>
 </div>

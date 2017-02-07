@@ -1,24 +1,29 @@
-<div class="form">
-  <h3>Add a New Restaurant to Yelpy</h3>
+<div class="container">
+    <div class="form col-md-6">
+      <h3 class="header">Add a New Restaurant to Yelpy</h3>
 
-    <% if @errors %>
-    <%= erb :"_errors" %>
-    <% end %>
+        <% if @errors %>
+        <%= erb :"_errors" %>
+        <% end %>
 
-  <form class="userForm" method="POST" action="/restaurants">
-    <label> Name: </label>
-    <br>
-    <input type="text" name="restaurant[name]" ><br>
-    <label> Cuisinine: </label><br>
-    <input type="text" name="restaurant[cuisine]"><br>
-    <label> Address: </label><br>
-    <input type="text" name="restaurant[address]"><br>
-    <label> City: </label><br>
-    <input type="text" name="restaurant[city]"><br>
-    <label> State: </label><br>
-    <input type="text" name="restaurant[state]"><br>
-    <input type="hidden" name="restaurant[creator_id]" value=<%= current_user.id %>><br>
+      <form class="userForm" method="POST" action="/restaurants">
+        <div class="form-group">
+            <label> Name: </label>
+            <br>
+            <input class="form-control"  type="text" name="restaurant[name]" ><br>
+            <label> Cuisinine: </label><br>
+            <input class="form-control" type="text" name="restaurant[cuisine]"><br>
+            <label> Address: </label><br>
+            <input class="form-control" type="text" name="restaurant[address]"><br>
+            <label> City: </label><br>
+            <input class="form-control" type="text" name="restaurant[city]"><br>
+            <label> State: </label><br>
+            <input class="form-control" type="text" name="restaurant[state]"><br>
+            <input type="hidden" name="restaurant[creator_id]" value=<%= current_user.id %>><br>
 
-    <input type="submit" value="Create this new restaurant!">
-  </form>
+            <button class="btn btn-primary" type="submit">Create this new restaurant!</button>
+            </div>
+      </form>
+
+    </div>
 </div>
