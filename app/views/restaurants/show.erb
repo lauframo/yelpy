@@ -1,42 +1,43 @@
+<div class="container">
 <div class="restaurantPage">
-  <h2> <%= @restaurant.name %> </h2>
+  <h2 class="header"> <%= @restaurant.name %> </h2>
 
-  <ul class="restaurantProfile">
-    <li> Cuisine: <%= @restaurant.cuisine %> </li>
-    <li> Address: <%= @restaurant.address %>
-    <li> City: <%= @restaurant.city %> </li>
-    <li> State: <%= @restaurant.state %> </li>
-     <% if @reviews.length > 1 %>
-    <li> Average Review Score: <%= @restaurant.average_score %> </li>
-    <% end %>
-  </ul>
-</div>
-<% if current_user %>
-  <% if current_user.id == @restaurant.creator_id %>
-    <p><a href="/restaurants/<%= @restaurant.id %>/edit"> Edit this restaurant </a>
-    <form class="deleteRestaurant" method="post" action="/restaurants/<%= @restaurant.id %>">
-      <input type="hidden" name="_method" value="delete">
-      <input id="deleteRestaurantButton" type="submit" value="Delete this restaurant">
-    </form>
-  <% end %>
-<% end %>
-<hr class="reviewsDivider">
-
-<div class="reviews">
-  <h3> Reviews </h3>
-  <% if !logged_in? %>
-  <p><a href="/users/new"> Leave your own review. </a></p>
-  <% else %>
-    <%= erb :"/reviews/_new" %>
-  <% end %>
- <% if @reviews.length > 1 %>
-  <ul>
-    <% @reviews.each do |review| %>
-      <li class="reviewBullet"> <span class="reviewContent"><%= review.content %> <br></span>
-        <span class = "reviewDetails"> <%= long_form_date(review.created_at) %> || Rating: <%= review.points %> || By: <%= User.find(review.author_id).username %>  </span> </li>
+  <div class="container">
+    <ul class="list-group col-sm-6">
+      <li class="list-group-item"> Cuisine: <%= @restaurant.cuisine %> </li>
+      <li class="list-group-item"> Address: <%= @restaurant.address %>
+      <li class="list-group-item"> City: <%= @restaurant.city %> </li>
+      <li class="list-group-item"> State: <%= @restaurant.state %> </li>
+       <% if @reviews.length > 1 %>
+      <li class="list-group-item"> Average Review Score: <%= @restaurant.average_score %> </li>
+      <% end %>
+    </ul>
+  <% if current_user %>
+    <% if current_user.id == @restaurant.creator_id %>
+      <p><a href="/restaurants/<%= @restaurant.id %>/edit"> Edit this restaurant </a>
+      <form class="deleteRestaurant" method="post" action="/restaurants/<%= @restaurant.id %>">
+        <input type="hidden" name="_method" value="delete">
+        <input id="deleteRestaurantButton" type="submit" value="Delete this restaurant">
+      </form>
     <% end %>
   <% end %>
-  </ul>
+  <!-- <hr class="reviewsDivider"> -->
+
+  <div class="container">
+    <h3 class="header col-sm-12"> Reviews </h3>
+    <% if !logged_in? %>
+    <p><a href="/users/new"> Leave your own review. </a></p>
+    <% else %>
+      <%= erb :"/reviews/_new" %>
+    <% end %>
+    <hr>
+   <% if @reviews.length > 1 %>
+      <%= erb :"/reviews/_show" %>
+    <% else %>
+      <p> No reviews for <%= @restaurant.name %> yet. Be the first one to review it!</p>
+  <% end %>
+  </div>
+  </div>
 </div>
 
 
